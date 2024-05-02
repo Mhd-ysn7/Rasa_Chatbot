@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DATACONSULT Chatbot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        .chat-sign-button {
+            width: 70px;
+            height: 70px;
+            font-size: 24px;
+        }
+        #chat-widget{
+            max-height: 450px;
+            overflow-y:hidden;
+            overflow-x:hidden;
+            position: relative;
+        }
+        #chat-widget-messages{
+            margin-right:15px;
+            overflow-y:auto;
+            max-height: calc(100% - 50px); /* Adjust height to leave space for the input */
+        }
+        .card-header, .card-footer {
+            position: sticky;
+            z-index: 999;
+            background-color: white; /* Add a background color to the footer */
+        }
+        .card-header {
+            top: 0;
+        }
+        .card-footer {
+            bottom: 0;
+        }
+
+        /* Add this CSS for the spinning animation */
+        .rotate-icon {
+            animation: spin 0.5s linear forwards;
+        }
+
+        @keyframes spin {
+            100% {
+            transform: rotate(360deg);
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+<div>
+    <h1>Welcome to DC Chatbot!</h1>
+    <img id="chat-widget-button" src="https://webchat-chatbot-uat.alfa.com.lb/Chatbot-Icon.png" type="button" class="btn btn-primary rounded-circle position-fixed chat-sign-button"
+         style="bottom: 20px; right: 20px;">
+
+    <div id="chat-widget" class="card position-fixed shadow d-none" style="bottom: 100px; right: 20px; width:300px;">
+        <div class="card-header bg-primary text-white" >
+            Dataconsult Chatbot
+            <button id="chat-widget-close-button" type="button" class="btn-close float-end"
+                    aria-label="Close"></button>
+        </div>
+
+        <div class="card-body" id="chat-widget-messages">
+    <div id="menu-options">
+        <strong>Menu:</strong>
+        <div><button class="btn btn-outline-primary" onclick="handleMenuSelection('About Data Consult')">About Data Consult</button></div>
+        <div><button class="btn btn-outline-primary" onclick="handleMenuSelection('Contact Information')">Contact Information</button></div>
+        <div><button class="btn btn-outline-primary" onclick="handleMenuSelection('Services')">Services</button></div>
+        <div><button class="btn btn-outline-primary" onclick="handleMenuSelection('Locations')">Locations</button></div>
+        <div><button class="btn btn-outline-primary" onclick="handleMenuSelection('Exit')">Exit</button></div>
+    </div>
+</div>
+        <div class="card-footer">
+            <input type="text" class="form-control" id="chat-widget-input" placeholder="Type your message...">
+        </div>
+    </div>
+</div>
+
+<script>
+    //widget
+    $(document).ready(function(){
+        $("#chat-widget-button").on("click", function(){
+            $("#chat-widget").toggleClass("d-none").slideDown("slow", function() {
+                updateMessageContainerHeight(); // Update message container height when opening
+            }); // Slide down animation
+            $(this).toggleClass("rotate-icon"); // Toggle rotation class
+        });
+
+        //close button
+        $("#chat-widget-close-button").on("click", function(){
+            $("#chat-widget").slideUp("slow", function() { // Slide up animation
+                $(this).addClass("d-none");
+            });
+        });
+
+        //Handle user input in the chatbox
+        $("#chat-widget-input").keypress(function(event){
+            if(event.which === 13){
+                let userMessage = $("#chat-widget-input").val();
+                $("#chat-widget-input").val("")
+
+                $("#chat-widget-messages").append("<div><strong>You:</strong> "+ userMessage + "</div>");
+
+// Check if the user types "/Menu"
+                if (userMessage.trim().toLowerCase() === "/menu") {
+                    resendMenu();
+                    return;
+                }
+
+                // Send user message to the server and get bot's response
+                $.ajax({
+                    type: "POST",
+                    url: "/webhook",
+                    contentType: "application/json",
+                    data: JSON.stringify({ message: userMessage }),
+                    success: function(data) {
+                        let botResponse = data.response;
+                        // Append bot's response to the chatbox
+                        $("#chat-widget-messages").append("<div><strong>Bot:</strong> " + botResponse + "</div>");
+                        updateMessageContainerHeight(); // Update message container height after receiving bot response
+                    },
+                    error: function() {
+                        // Handle error if needed
+                    }
+                });
+            }
+        });
+
+        // Function to update message container height
+        function updateMessageContainerHeight() {
+            $("#chat-widget-messages").css("max-height", ($("#chat-widget").height() - $(".card-footer").outerHeight()) + "px");
+        }
+
+        // Update message container height when window is resized
+        $(window).resize(function() {
+            if (!$("#chat-widget").hasClass("d-none")) {
+                updateMessageContainerHeight();
+            }
+        });
+    });
+
+// bas yije events is hne true positive aw laa, analysts
+
+
+    // Function to handle menu selection
+function handleMenuSelection(option) {
+    // Append user selection to the chatbox
+    $("#chat-widget-messages").append("<div><strong>You:</strong> " + option + "</div>");
+
+    // Send the user's selection to the server
+    $.ajax({
+        type: "POST",
+        url: "/webhook",
+        contentType: "application/json",
+        data: JSON.stringify({ message: option }),
+        success: function(data) {
+            let botResponse = data.response;
+            // Append bot's response to the chatbox
+            let botResponseElement = $("<div><strong>Bot:</strong> " + botResponse + "</div>");
+            $("#chat-widget-messages").append(botResponseElement);
+            updateMessageContainerHeight(); // Update message container height after receiving bot response
+
+            // Delay before removing initial menu and resending it
+            setTimeout(function() {
+                // Remove initial menu from the chatbox if choice is not "Exit"
+                if (option !== 'Exit') {
+                    $("#chat-widget-messages").find('.menu-options').remove();
+                    // Resend the menu to the user
+                    resendMenu();
+                }
+            }, 2000); // Delay of 2 seconds
+
+            // Scroll to the beginning of the bot's response
+            scrollToElement(botResponseElement);
+        },
+        error: function() {
+            // Handle error if needed
+        }
+    });
+}
+
+// Function to scroll to a specific element in the chatbox
+function scrollToElement(element) {
+    $("#chat-widget-messages").scrollTop($("#chat-widget-messages").scrollTop() + element.position().top);
+}
+
+// Function to resend the menu to the user
+function resendMenu() {
+    // Append the menu options to the chatbox
+    $("#chat-widget-messages").append('<div class="menu-options"><strong>Menu:</strong></div>');
+    $("#chat-widget-messages").append('<div class="menu-options"><button class="btn btn-outline-primary" onclick="handleMenuSelection(\'About Data Consult\')">About Data Consult</button></div>');
+    $("#chat-widget-messages").append('<div class="menu-options"><button class="btn btn-outline-primary" onclick="handleMenuSelection(\'Contact Information\')">Contact Information</button></div>');
+    $("#chat-widget-messages").append('<div class="menu-options"><button class="btn btn-outline-primary" onclick="handleMenuSelection(\'Services\')">Services</button></div>');
+    $("#chat-widget-messages").append('<div class="menu-options"><button class="btn btn-outline-primary" onclick="handleMenuSelection(\'Locations\')">Locations</button></div>');
+    $("#chat-widget-messages").append('<div class="menu-options"><button class="btn btn-outline-primary" onclick="handleMenuSelection(\'Exit\')">Exit</button></div>');
+    updateMessageContainerHeight(); // Update message container height after resending menu
+}
+
+// Function to update message container height
+function updateMessageContainerHeight() {
+    $("#chat-widget-messages").css("max-height", ($("#chat-widget").height() - $(".card-footer").outerHeight()) + "px");
+}
+
+// Update message container height when window is resized
+$(window).resize(function() {
+    if (!$("#chat-widget").hasClass("d-none")) {
+        updateMessageContainerHeight();
+    }
+});
+
+// Initialize message container height on page load
+updateMessageContainerHeight();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - thanks
+  - define
+  - year
+  - locations
+  - specialties
+  - size
+  - phone
+  - website
+  - leb_loc
+  - values
+  - iso
+  - partners
+  - solutions
+  - Mservices
+  - innovations
+  - email
+  - contact
+  - menu_selection
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you? What information would you like to know? You can choose from the following options:\n1. About Data Consult\n2. Contact Information\n3. Services\n4. Locations\n5. Exit"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_thanks:
+  - text: "You're Welcome! It's my pleasure to help you."
+
+  utter_define:
+  - text: "We have always been committed to providing the best solutions to businesses. Since the company’s inception in 1991, our team has been working on delivering avant-garde, integrated solutions in order to safeguard sustainability. To maintain this promise, we partnered with the best technology providers and invested in high-end trainings.
+
+With over 150 highly skilled professionals dedicated to serving our clients, we’ve become a recognized industry leader in the Middle East and Africa, garnering more than 100 vendor and industry awards over the past two and a half decades.
+
+Today we are at the forefront of solution design, solution integration, managed services and digital innovation."
+
+  utter_contact:
+  - text: "E-Mail Us
+    info@dcgroup.com
+    info_jordan@dcgroup.com
+    info_ksa@dcgroup.com 
+    or
+    Call Us
+    Lebanon: +961 (1) 686555
+    Jordan: +962 (6) 5652291
+    KSA: +966 (11) 2293555
+    Cairo: +20 120 147 93 05"
+
+  utter_phone:
+  - text: "Call Us
+    Lebanon: +961 (1) 686555
+    Jordan: +962 (6) 5652291
+    KSA: +966 (11) 2293555
+    Cairo: +20 120 147 93 05"
+
+  utter_year:
+  - text: "Since 1991."
+
+  utter_locations:
+  - text: " Data Consult is located in KSA, Lebanon, Jordan, Iraq, Egypt"
+
+  utter_size:
+  - text: "We have 160 employees"
+
+  utter_website:
+  - text: "https://dcgroup.com"
+
+  utter_leb_loc:
+  - text: "Mkalles 2001 Center, Bloc A, 2nd Floor Mkalless Road"
+
+  utter_values:
+  - text: "At Data Consult, we are guided by a set of core values we’ve developed as our company grew. They describe our company as we want it to be, vanguard, sharp and dynamic.
+    They are the guiding principles we go by everyday, because we see ourselves as responsible towards all our stakeholders, including customers, employees, suppliers, and partners.
+    Vision. This value is the offspring of creativity. We are always at the forefront of technology, and through our inventiveness we carry this legacy into the future.
+    Insights. We understand the cycle of the industry, and are dedicated to serving our clients and their companies, as a way of constantly pushing the industry forward.
+    Determination. Success does not come without determination and vision. We were and will always be determined to be the leader in our field by keeping a vigilant eye on technology advancements to progress with time"
+
+  utter_iso:
+  - text: "We are pleased to announce that Data Consult is officially ISO 27001 Certified!
+    WHAT DOES THIS MEAN FOR YOUR BUSINESS?
+    SECURE 
+    Your infrastructure is managed by a qualified staff from a secure operation center.
+    SAFE 
+    Your data is safe with us.
+    TRANSPARENT
+    You get to keep an audit trail of all administration and operation tasks."
+
+  utter_solutions:
+  - text: "TELEWORKER SOLUTIONS
+    PROFESSIONAL SERVICES
+    CUSTOMER EXPERIENCE
+    SECURITY
+    SERVICE PROVIDERS
+    INTERNET OF THINGS"
+
+  utter_Mservices:
+  - text: "MANAGED NOC
+    CLEARPATH
+    CLEANPIPE
+    MAILSHIELD"
+
+  utter_innovations:
+  - text: "SYNERGI
+    DATAFENCE
+    SMART CITY
+    DATA INTEGRATION SERVICES."
+
+  utter_email:
+  - text: "E-Mail Us
+    info@dcgroup.com
+    info_jordan@dcgroup.com
+    info_ksa@dcgroup.com"
+
+  utter_partners:
+  - text: "CISCO, meraki, HewlettPackard Enterprise, aruba, zoom international, VMware, veeam, FireEye, Infoblox, Symantec, paloalto, ORACLE, ERICSSON, SONA, RSA, riverbed, RAPID7, ARBOR Networks, KASPERSKY, IBM Security, UCOPIA, ssh, f5, es et, Cafe X, Avecato, FORTINET, TREND MICRO, infobip, VERSA Networks, BriefCam."
+
+  utter_specialties:
+  - text: "CISCO, meraki, HewlettPackard Enterprise, aruba, zoom international, VMware, veeam, FireEye, Infoblox, Symantec, paloalto, ORACLE, ERICSSON, SONA, RSA, riverbed, RAPID7, ARBOR Networks, KASPERSKY, IBM Security, UCOPIA, ssh, f5, es et, Cafe X, Avecato, FORTINET, TREND MICRO, infobip, VERSA Networks, BriefCam."
+
+  utter_select_solutions:
+  - text: "Sure Here are our solutions"

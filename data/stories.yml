@@ -1,0 +1,145 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: user selects about Data Consult
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: menu_selection
+  - action: action_about_dataconsult
+
+- story: user selects contact information
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: menu_selection
+  - action: action_contact_info
+
+# Add similar stories for other menu options
+
+- story: user selects exit
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: menu_selection
+  - action: action_exit
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: express thanks
+  steps:
+  - intent: thanks
+  - action: utter_thanks
+
+- story: definition
+  steps:
+  - intent: define
+  - action: utter_define
+
+- story: solutions
+  steps:
+  - intent: solutions
+  - action: utter_solutions
+
+- story: Mservices
+  steps:
+  - intent: Mservices
+  - action: utter_Mservices
+
+- story: innovations
+  steps:
+  - intent: innovations
+  - action: utter_innovations
+
+- story: locations
+  steps:
+  - intent: locations
+  - action: utter_locations
+
+- story: phone
+  steps:
+  - intent: phone
+  - action: utter_phone
+
+- story: email
+  steps:
+  - intent: email
+  - action: utter_email
+
+- story: size
+  steps:
+  - intent: size
+  - action: utter_size
+
+- story: specialties
+  steps:
+  - intent: specialties
+  - action: utter_specialties
+
+- story: website
+  steps:
+  - intent: website
+  - action: utter_website
+
+- story: leb_loc
+  steps:
+  - intent: leb_loc
+  - action: utter_leb_loc
+
+- story: values
+  steps:
+  - intent: values
+  - action: utter_values
+
+- story: iso
+  steps:
+  - intent: iso
+  - action: utter_iso
+
+- story: partners
+  steps:
+  - intent: partners
+  - action: utter_partners
+
+
+- story: values
+  steps:
+  - intent: values
+  - action: utter_values
+
+- story: iso
+  steps:
+  - intent: iso
+  - action: utter_iso
+
+- story: contact
+  steps:
+  - intent: contact
+  - action: utter_contact
+

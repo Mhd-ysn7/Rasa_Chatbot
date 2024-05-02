@@ -1,0 +1,255 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - who are you?
+
+- intent: contact
+  examples: |
+    - how can i contact you
+    - contact info
+    - contact data consult 
+    - contact dc
+    - contact information
+    - contact dataconsult
+
+- intent: thanks
+  examples: |
+    - thanks
+    - thank you
+    - thx
+    - appreciate it
+    - many thanks
+
+- intent: define
+  examples: |
+    - What is Data Consult?
+    - What is DataConsult?
+    - Talk about Data Consult
+    - what is your company?
+    - what does your company do?
+    - define dataconsult
+    - definition of dataconsult
+    - about data consult
+
+- intent: website
+  examples: |
+    - What is Data Consult's website?
+    - What is the webiste of DataConsult
+    - do you have a website?
+    - what is the website of the company?
+
+- intent: phone
+  examples: |
+    - contact using phone
+    - What is Data Consult's phone number?
+    - What is the phone number of DataConsult
+    - do you have a phone nb?
+    - what is the phone number of the company?    
+    - i want to call dataconsult
+
+- intent: email
+  examples: |
+    - contact using email
+    - What is Data Consult's email?
+    - What is the email of DataConsult
+    - do you have an email?
+    - what is the email of the company?    
+    - i want to email dataconsult
+    - i want to send an email to DC
+    - i want the email
+
+- intent: size
+  examples: |
+    - What is Data Consult's size?
+    - how many employees work at DataConsult
+    - how many employees work in DC
+    - how many workers at DataConsult   
+
+- intent: specialties
+  examples: |
+    - What are Data Consult's specialties?
+    - What are the specialties of Data Consult?
+    - in what is dataconsult specialized?
+
+- intent: locations
+  examples: |
+    - Where does Data Consult have branches?
+    - Where are the locations of dataconsult?
+    - do you have a branch in
+    - do you have a branch in .....?
+    - where is the location?
+    - where are the locations?
+    - where are you located?
+    - where is data consult located?
+    - where are the branches of dataconsult?
+    - where are you found?
+    - give me your locations
+    - give me your locations around the world
+
+- intent: year
+  examples: |
+    - since when is dataconsult working?
+    - in which year is dataconsult founded?
+
+- intent: leb_loc
+  examples: |
+    - where can i find dataconsult in lebanon?
+    - do you have a branch in lebanon?
+    - where is the locations of dataconsult in lebanon?
+    - location in lebanon
+    - give me the location in lebanon
+    - give me your location in lebanon
+
+- intent: values
+  examples: |
+    - what are your values?
+    - talk about the values of dataconsult.
+    - values of data consult
+
+- intent: iso
+  examples: |
+    - what is iso?
+    - talk about the iso27001.
+    - talk about the iso
+    - what is iso27001?
+    - iso
+    - iso27001
+
+- intent: partners
+  examples: |
+    - what are the partners of dataconsult?
+    - your partners.
+    - partners with other companies
+    - wdo you have partnerships?
+    - what are the companies that you have collaborations with?
+    - do you have collaboration with other companies?
+    - do you have partnerships with other companies?
+
+- intent: solutions
+  examples: |
+    - what are the solutions of dataconsult?
+    - what are the solutions that data consult provides?
+    - what are your solutions
+    - solutions of data consult
+    - talk about the solutions of DC?
+    - talk about the solutions that data consult provides?
+    - solutions of data consult
+    - what are the services of dataconsult?
+    - what are the services that data consult provides?
+    - what are your services
+    - services of data consult
+
+- intent: Mservices
+  examples: |
+    - what are the managed services of dataconsult?
+    - what are the managed services that data consult provides?
+    - what are your managed services
+    - managed services of data consult
+    - talk about the managed services of DC?
+    - talk about the managed services that data consult provides?
+
+
+- intent: menu_selection
+  examples: |
+    - About Data Consult
+    - Contact Information
+    - Services
+    - Locations
+    - Exit
+
+- intent: innovations
+  examples: |
+    - what are the innovations of dataconsult?
+    - what are the innovations that data consult has?
+    - what are your innovations
+    - innovations of data consult
+    - talk about the innovations of DC?
+    - talk about the innovations that data consult has?
